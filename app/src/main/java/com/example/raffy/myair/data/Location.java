@@ -15,6 +15,8 @@ public class Location extends RealmObject {
 
     private int locationId;
 
+    private int aqi;
+
     public Location() {
 
     }
@@ -41,5 +43,13 @@ public class Location extends RealmObject {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public int getAqi() {
+        return aqi;
+    }
+
+    public void setAqi(int aqi) {
+        this.aqi = aqi;
     }
 }

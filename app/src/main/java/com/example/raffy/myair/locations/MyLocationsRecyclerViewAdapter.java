@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import com.example.raffy.myair.data.Location;
 import com.example.raffy.myair.R;
+import com.example.raffy.myair.data.LocationFeed;
+import com.example.raffy.myair.data.source.LocationsDataSource;
 import com.example.raffy.myair.data.source.LocationsRepository;
 import com.example.raffy.myair.databinding.FragmentLocationsBinding;
 
@@ -37,8 +39,30 @@ public class MyLocationsRecyclerViewAdapter extends RecyclerView.Adapter<MyLocat
         Location location = mValues.get(position);
         LocationViewModel viewModel = new LocationViewModel(mRepository);
 
+        LocationsActivity activity = (LocationsActivity) holder.mBinding.getRoot().getContext();
+
+        fetchLocationFeed(activity, location, viewModel);
+
         viewModel.setLocation(location);
         holder.bind(viewModel);
+    }
+
+    public void fetchLocationFeed(final LocationsActivity activity, final Location location, final LocationViewModel viewModel) {
+        mRepository.getLocationFeed(location, new LocationsDataSource.LoadFeedCallback() {
+            @Override
+            public void onLoadFeed(final LocationFeed feed) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.mRealm.beginTransaction();
+                        location.setAqi(feed.getAqi());
+                        activity.mRealm.commitTransaction();
+
+                        viewModel.location.notifyChange();
+                    }
+                });
+            }
+        });
     }
 
     @Override

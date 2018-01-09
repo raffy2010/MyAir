@@ -25,7 +25,7 @@ public interface LocationsDataSource {
 
     void getLocations(LoadLocationsCallback callback);
 
-    void getLocationFeed(int locationId, LoadFeedCallback callback);
+    void getLocationFeed(Location location, LoadFeedCallback callback);
 
     void saveLocation(LocationItem locationItem);
 

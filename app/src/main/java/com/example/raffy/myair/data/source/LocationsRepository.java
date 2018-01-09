@@ -58,8 +58,10 @@ public class LocationsRepository implements LocationsDataSource {
     }
 
 
-    public void getLocationFeed(int locationId, LoadFeedCallback callback) {
-        String url = String.format("http://api.waqi.info/feed/%d/?token=%s&keyword=%s", locationId, API_TOKEN);
+    public void getLocationFeed(Location location, LoadFeedCallback callback) {
+        String url = String.format("http://api.waqi.info/feed/@%d/?token=%s", location.getLocationId(), API_TOKEN);
+
+        Log.i("Location Feed Url", url);
 
         doFetchFeed(url, callback);
     }
@@ -67,9 +69,11 @@ public class LocationsRepository implements LocationsDataSource {
     @Override
     public void saveLocation(LocationItem locationItem) {
         mRealm.beginTransaction();
-        Location user = mRealm.createObject(Location.class, UUID.randomUUID().toString()); // Create a new object
-        user.setName(locationItem.getStation().getName());
-        user.setLocationId(locationItem.getUid());
+        Location location = mRealm.createObject(Location.class, UUID.randomUUID().toString()); // Create a new object
+        location.setName(locationItem.getStation().getName());
+        location.setLocationId(locationItem.getUid());
+        location.setAqi(0);
+
         mRealm.commitTransaction();
     }
 

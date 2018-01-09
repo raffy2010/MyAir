@@ -14,6 +14,8 @@ public class LocationViewModel extends LocationsViewModel {
 
     public ObservableField<Location> location = new ObservableField<>();
 
+    public String emptyAqi = "";
+
     public LocationViewModel(LocationsRepository repository) {
         super(repository);
     }

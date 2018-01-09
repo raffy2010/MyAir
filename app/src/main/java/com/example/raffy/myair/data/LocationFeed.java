@@ -1,5 +1,7 @@
 package com.example.raffy.myair.data;
 
+import java.util.List;
+
 /**
  * Created by raffy on 09/01/2018.
  */
@@ -90,7 +92,7 @@ public class LocationFeed {
     public class City {
         private String name;
         private String url;
-        private String geo;
+        private List<String> geo;
 
         public String getName() {
             return name;
@@ -108,11 +110,11 @@ public class LocationFeed {
             this.url = url;
         }
 
-        public String getGeo() {
+        public List<String> getGeo() {
             return geo;
         }
 
-        public void setGeo(String geo) {
+        public void setGeo(List<String> geo) {
             this.geo = geo;
         }
     }

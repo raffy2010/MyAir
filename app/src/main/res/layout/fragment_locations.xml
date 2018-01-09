@@ -18,6 +18,11 @@
             android:layout_margin="@dimen/text_margin"
             android:text="@{viewmodel.location.name}"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@{viewmodel.location.aqi != 0 ? Integer.toString(viewmodel.location.aqi) : viewmodel.emptyAqi}"/>
     </LinearLayout>
 </layout>
 

@@ -19,7 +19,7 @@ import io.realm.Realm;
 public class LocationsActivity extends AppCompatActivity implements LocationNavigator {
     private LocationsViewModel mLocationsViewModel;
 
-    private Realm mRealm;
+    public Realm mRealm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
