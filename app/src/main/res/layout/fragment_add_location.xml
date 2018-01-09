@@ -1,0 +1,30 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.raffy.myair.addlocation.AddLocationViewModel" />
+        <variable
+            name="view"
+            type="com.example.raffy.myair.addlocation.AddLocationFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/location_search"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="@string/hint_search_location"
+            android:text="@={viewmodel.keyword}" />
+
+        <ListView
+            android:id="@+id/location_search_ret"
+            app:items="@{viewmodel.locationItems}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
+    </LinearLayout>
+</layout>
+
