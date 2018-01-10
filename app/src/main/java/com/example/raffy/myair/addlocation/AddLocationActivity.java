@@ -22,6 +22,8 @@ public class AddLocationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle("Add Location");
+
         findOrCreateFragment();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

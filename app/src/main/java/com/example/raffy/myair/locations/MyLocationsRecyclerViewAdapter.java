@@ -20,7 +20,10 @@ public class MyLocationsRecyclerViewAdapter extends RecyclerView.Adapter<MyLocat
 
     private LocationsRepository mRepository;
 
-    public MyLocationsRecyclerViewAdapter(List<Location> locations, LocationsRepository repository) {
+    public MyLocationsRecyclerViewAdapter(
+            List<Location> locations,
+            LocationsRepository repository
+    ) {
         mValues = locations;
         mRepository = repository;
     }

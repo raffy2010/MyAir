@@ -27,6 +27,7 @@ public class LocationsActivity extends AppCompatActivity implements LocationNavi
         setContentView(R.layout.activity_locations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Locations");
 
         mRealm = Realm.getDefaultInstance();
         findOrCreateFragment();

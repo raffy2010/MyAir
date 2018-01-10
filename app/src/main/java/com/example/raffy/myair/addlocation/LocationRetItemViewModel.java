@@ -1,7 +1,10 @@
 package com.example.raffy.myair.addlocation;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 
+import com.example.raffy.myair.R;
 import com.example.raffy.myair.data.LocationItem;
 import com.example.raffy.myair.data.source.LocationsRepository;
 
@@ -13,5 +16,4 @@ public class LocationRetItemViewModel extends AddLocationViewModel {
     public LocationRetItemViewModel(LocationsRepository repository) {
         super(repository);
     }
-
 }

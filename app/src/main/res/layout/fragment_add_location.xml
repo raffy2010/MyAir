@@ -4,9 +4,6 @@
         <variable
             name="viewmodel"
             type="com.example.raffy.myair.addlocation.AddLocationViewModel" />
-        <variable
-            name="view"
-            type="com.example.raffy.myair.addlocation.AddLocationFragment" />
     </data>
 
     <LinearLayout
@@ -16,7 +13,10 @@
         <EditText
             android:id="@+id/location_search"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:hint="@string/hint_search_location"
             android:text="@={viewmodel.keyword}" />
 

@@ -43,7 +43,6 @@ public class AddLocationFragment extends Fragment {
         mBinding = FragmentAddLocationBinding.inflate(inflater, container, false);
 
         mBinding.setViewmodel(mViewModel);
-        mBinding.setView(this);
 
         mViewModel.setupKeywordObserver();
 
@@ -65,12 +64,17 @@ public class AddLocationFragment extends Fragment {
 
         LocationItemAdapter adapter = new LocationItemAdapter(
                 new ArrayList<LocationItem>(0),
-                activity.getRepository()
+                activity.getRepository(),
+                mViewModel
         );
 
         ListView searchResult = mBinding.locationSearchRet;
 
         searchResult.setAdapter(adapter);
+    }
+
+    public void cleanSearchRet() {
+
     }
 
     public static class LocationItemAdapter extends BaseAdapter {
@@ -79,10 +83,13 @@ public class AddLocationFragment extends Fragment {
 
         private LocationsRepository mRepository;
 
+        private AddLocationViewModel mViewModel;
 
-        public LocationItemAdapter(List<LocationItem> locationItemList, LocationsRepository repository) {
+
+        public LocationItemAdapter(List<LocationItem> locationItemList, LocationsRepository repository, AddLocationViewModel viewModel) {
             replaceData(locationItemList);
             mRepository = repository;
+            mViewModel = viewModel;
         }
 
         @Override
@@ -126,6 +133,10 @@ public class AddLocationFragment extends Fragment {
             mLocationItems = locationItemList;
 
             notifyDataSetChanged();
+        }
+
+        public void cleanSearchRet() {
+            mViewModel.resetSearch();
         }
     }
 }

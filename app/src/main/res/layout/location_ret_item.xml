@@ -10,11 +10,11 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:paddingLeft="18dp"
-        android:paddingRight="18dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:onClick="@{viewmodel.addLocation}"
         app:flexDirection="row"
-        app:alignItems="center"
-        android:onClick="@{viewmodel.addLocation}">
+        app:alignItems="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
