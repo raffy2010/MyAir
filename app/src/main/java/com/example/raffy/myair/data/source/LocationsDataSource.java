@@ -23,13 +23,17 @@ public interface LocationsDataSource {
         void onLoadLocations(List<LocationItem> locationList);
     }
 
+    interface DeleteLocationCallback {
+        void onDeleteLocation();
+    }
+
     void getLocations(LoadLocationsCallback callback);
 
     void getLocationFeed(Location location, LoadFeedCallback callback);
 
     void saveLocation(LocationItem locationItem);
 
-    void deleteLocation(Location location);
+    void deleteLocation(Location location, DeleteLocationCallback callback);
 
     void searchLocation(String keyword, SearchLocationsCallback callback);
 }

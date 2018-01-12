@@ -1,5 +1,7 @@
 package com.example.raffy.myair.locations;
 
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import com.example.raffy.myair.data.source.LocationsRepository;
 import com.example.raffy.myair.databinding.FragmentLocationsBinding;
 
 import java.util.List;
+
+import jp.wasabeef.recyclerview.animators.holder.AnimateViewHolder;
 
 public class MyLocationsRecyclerViewAdapter extends RecyclerView.Adapter<MyLocationsRecyclerViewAdapter.ViewHolder> {
 
@@ -77,6 +81,25 @@ public class MyLocationsRecyclerViewAdapter extends RecyclerView.Adapter<MyLocat
         mValues = locations;
 
         notifyDataSetChanged();
+    }
+
+    public void remove(final int position) {
+        Location location = mValues.get(position);
+
+        mRepository.deleteLocation(location, new LocationsDataSource.DeleteLocationCallback() {
+            @Override
+            public void onDeleteLocation() {
+                mValues.remove(position);
+                notifyItemRemoved(position);
+            }
+        });
+    }
+
+
+    public void move(int from, int to) {
+        Location prev = mValues.remove(from);
+        mValues.add(to > from ? to - 1 : to, prev);
+        notifyItemMoved(from, to);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

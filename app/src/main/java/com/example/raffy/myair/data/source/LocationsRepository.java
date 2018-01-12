@@ -78,8 +78,14 @@ public class LocationsRepository implements LocationsDataSource {
     }
 
     @Override
-    public void deleteLocation(Location location) {
-        // do something
+    public void deleteLocation(Location location, DeleteLocationCallback callback) {
+        mRealm.beginTransaction();
+
+        location.deleteFromRealm();
+
+        mRealm.commitTransaction();
+
+        callback.onDeleteLocation();
     }
 
     @Override

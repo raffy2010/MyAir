@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -26,7 +27,11 @@ android {
 
 repositories {
     maven {
-        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo';
+    }
+
+    maven {
+        url "https://maven.google.com"
     }
 }
 
@@ -46,6 +51,7 @@ dependencies {
     compile 'com.uphyca:stetho_realm:2.1.0'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.google.android:flexbox:0.3.2'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.7'
 }
 
 realm {

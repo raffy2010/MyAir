@@ -1,8 +1,11 @@
 package com.example.raffy.myair.locations;
 
 import android.databinding.ObservableField;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
+import com.example.raffy.myair.R;
 import com.example.raffy.myair.data.Location;
 import com.example.raffy.myair.data.source.LocationsRepository;
 
@@ -18,10 +21,6 @@ public class LocationViewModel extends LocationsViewModel {
 
     public LocationViewModel(LocationsRepository repository) {
         super(repository);
-    }
-
-    public void viewDetail() {
-
     }
 
     public void setLocation(Location newLocation) {
